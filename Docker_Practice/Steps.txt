@@ -1,0 +1,48 @@
+commands used in Docker File:
+FROM -- create base image(Ex: linux/ubuntu) by taking it from docker hub. After creating base image, create docker image by adding diffrent components(Ex: Anaconda,flask, flasgger, etc) on top of it.
+COPY -- copy folder structure from host/local machine to user root folder in docker image.
+EXPOSE -- Each docker image has a network interface expose this web application by using port(Ex: 5000 or 8000).
+WORKDIR -- make working directory as user root directory.
+RUN -- pip install -r requirements.txt  
+CMD -- python app.py
+
+path -- cd Downloads\Docker_Practice
+
+Steps:
+1) Create Docker File
+2) Build docker image
+
+docker build -t money_api .
+
+3)see the dockers
+
+docker ps
+
+4) Run the dockers
+
+docker run -p 8000:8000 money_api
+
+Docker file Example:
+
+FROM continuumio/anaconda3 or FROM continuumio/anaconda3:4.4.0
+COPY . /usr/app/
+EXPOSE 5000
+WORKDIR /usr/app/
+RUN pip install -r requirements.txt
+CMD python flask_api.py
+
+Requirements:
+
+Flask==1.1.1
+gunicorn==19.9.0
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
+Werkzeug==0.15.5
+numpy>=1.9.2
+scipy>=0.15.1
+scikit-learn==0.22.1
+matplotlib>=1.4.3
+pandas>=0.19
+flasgger==0.9.4
+streamlit
